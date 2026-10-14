@@ -16,6 +16,8 @@
 }
 
 /* Hero art direction: illuminated Landmark Suites sign remains the focal point */
+.nav-inner{max-width:none;width:100%;margin:0;padding-left:5.5%;padding-right:5.5%}
+@media(max-width:1180px) and (min-width:781px){.nav-inner{padding-left:3.8%;padding-right:3.8%}.links{gap:13px;font-size:8px}.nav .btn{padding-left:16px;padding-right:16px}.brand-name{font-size:16px}}
 .hero{height:100svh;min-height:700px;max-height:1020px;align-items:stretch}
 .hero>img{object-position:54% 50%;object-fit:cover}
 .hero:after{background:linear-gradient(90deg,rgba(3,8,5,.58) 0%,rgba(3,8,5,.33) 36%,rgba(3,8,5,.05) 76%,rgba(3,8,5,.02) 100%),linear-gradient(0deg,rgba(2,7,4,.55) 0%,rgba(2,7,4,.08) 56%,rgba(2,7,4,.02) 100%)}
@@ -28,6 +30,7 @@
 .hero h1{font-size:clamp(58px,7.4vw,88px);max-width:760px}
 }
 @media(max-width:780px){
+.nav-inner{padding:12px 6%}
 .hero{height:84svh;min-height:590px;max-height:800px}
 .hero>img{object-position:72% center}
 .hero:after{background:linear-gradient(180deg,rgba(3,8,5,.03) 0%,rgba(3,8,5,.18) 36%,rgba(3,8,5,.82) 100%),linear-gradient(90deg,rgba(3,8,5,.22),rgba(3,8,5,.02))}
