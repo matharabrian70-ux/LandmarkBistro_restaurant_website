@@ -7,6 +7,7 @@ has multiple source candidates; the build stops rather than shipping missing fil
 """
 from pathlib import Path
 from urllib.request import Request, urlopen
+import ssl
 from urllib.error import URLError, HTTPError
 
 OUT = Path("assets/images")
@@ -103,7 +104,8 @@ for filename, candidates in ASSETS.items():
     for url in candidates:
         try:
             request = Request(url, headers=HEADERS)
-            with urlopen(request, timeout=25) as response:
+            context = ssl._create_unverified_context() if url.startswith("https://thelandmarksuites.com/") else ssl.create_default_context()
+            with urlopen(request, timeout=25, context=context) as response:
                 data = response.read()
                 content_type = response.headers.get("Content-Type", "")
             if len(data) < 6000 or not looks_like_image(data) or "image/" not in content_type.lower():
