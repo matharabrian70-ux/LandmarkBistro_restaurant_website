@@ -23,6 +23,27 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Prepare local property photography
+        run: python3 scripts/fetch_images.py
+      - name: Verify local image assets are present
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          errors = []
+          for page in ("index.html", "bistro.html"):
+              source = Path(page).read_text()
+              paths = set(re.findall(r'assets/images/[A-Za-z0-9_.-]+', source))
+              for path in paths:
+                  file = Path(path)
+                  if not file.is_file() or file.stat().st_size < 6000:
+                      errors.append(f"{page}: missing or too-small {path}")
+              if re.search(r'<img[^>]+src="https?://', source):
+                  errors.append(f"{page}: direct remote image reference remains")
+          if errors:
+              raise SystemExit("\n".join(errors))
+          print("Both pages reference locally staged images; no remote img sources remain.")
+          PY
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload static site
