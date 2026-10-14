@@ -77,10 +77,6 @@ ASSETS = {
         BASE + "dinep-1.jpg",
         UNSPLASH + "photo-1414235077428-338989a2e8c0?fit=crop&fm=jpg&w=1600&q=82",
     ],
-        BASE + "dinep-1.jpg",
-        BASE + "dinep-4.jpg",
-        UNSPLASH + "photo-1515003197210-e0cd7184f8b5?fit=crop&fm=jpg&w=1200&q=82",
-    ],
     "hotel-gallery.jpg": [
         BASE + "slider-3.jpg",
         BASE + "slider-1.jpg",
